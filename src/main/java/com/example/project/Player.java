@@ -26,10 +26,26 @@ public class Player{
     public void sortAllCards(){} 
 
     public ArrayList<Integer> findRankingFrequency(){
-        return new ArrayList<>(); 
+        ArrayList<Integer> rankingFrequencey = new ArrayList<>(13);
+        for (int i = 0; i < rankingFrequencey.size(); i++){
+            for (int j = 0; j < allCards.size(); j++){
+                if (Utility.getRankValue(allCards.get(j).getRank()) - 2 == i){
+                    rankingFrequencey.add(i, rankingFrequencey.remove(i) + 1);
+                }
+            }
+        }
+        return rankingFrequencey; 
     }
 
     public ArrayList<Integer> findSuitFrequency(){
+        ArrayList<Integer> suitFrequency = new ArrayList<>(4);
+        for (int i = 0; i < suitFrequency.size(); i++){
+            for (int j = 0; j < allCards.size(); j++){
+                if (allCards.get(j).getSuit().equals(suitFrequency)){
+                    
+                }
+            }
+        }
         return new ArrayList<>(); 
     }
 
