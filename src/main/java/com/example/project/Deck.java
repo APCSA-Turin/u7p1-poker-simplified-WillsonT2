@@ -27,7 +27,7 @@ public class Deck{
         Collections.shuffle(cards);
     }
 
-    public  Card drawCard(){
+    public Card drawCard(){
        return new Card("","");
     }
 
