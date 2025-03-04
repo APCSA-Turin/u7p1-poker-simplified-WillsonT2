@@ -21,6 +21,36 @@ public class Player{
     public void addCard(Card c){
         hand.add(c);
     }
+    
+    public boolean checkFourOfAKind(){
+        ArrayList<Integer> rankingFrequency = findRankingFrequency();
+        for (int i = 0; i < rankingFrequency.size(); i++){
+            if (rankingFrequency.get(i) == 4){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkThreeOfAKind(){
+        ArrayList<Integer> rankingFrequency = findRankingFrequency();
+        for (int i = 0; i < rankingFrequency.size(); i++){
+            if (rankingFrequency.get(i) == 3){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkPair(){
+        ArrayList<Integer> rankingFrequency = findRankingFrequency();
+        for (int i = 0; i < rankingFrequency.size(); i++){
+            if (rankingFrequency.get(i) == 2){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public boolean checkFlush(){
         ArrayList<Integer> suitFrequency = findSuitFrequency();
@@ -96,19 +126,19 @@ public class Player{
             return "Royal Flush";
         }else if (checkFlush() && checkStraight()){
             return "Straight Flush";
-        }else if (rankingFrequency.contains(4)){
+        }else if (checkFourOfAKind()){
             return "Four of a Kind";
-        }else if (rankingFrequency.contains(3) && rankingFrequency.contains(2)){
+        }else if (checkThreeOfAKind() && checkPair()){
             return "Full House";
         }else if (checkFlush()){
             return "Flush";
         }else if (checkStraight()){
             return "Straight";
-        }else if (rankingFrequency.contains(3)){
+        }else if (checkThreeOfAKind()){
             return "Three of a Kind";
         }else if (checkTwoPair()){
             return "Two Pair";
-        }else if (rankingFrequency.contains(2)){
+        }else if (checkPair()){
             return "A Pair";
         }else if (checkHighCard()){
             return "High Card";
