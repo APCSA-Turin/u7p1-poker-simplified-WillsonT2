@@ -18,6 +18,7 @@ public class Player{
     public ArrayList<Card> getAllCards(){return allCards;}
     public int getHighHandCard(){return highHandCard;}
     public int getHighAllCard(){return highAllCard;}
+
     public void addCard(Card c){
         hand.add(c);
     }
@@ -90,6 +91,7 @@ public class Player{
         return firstPair && secondPair;
     }
 
+
     public boolean checkHighCard(){
         int highHandCard = Utility.getRankValue(hand.get(0).getRank());
         int highAllCard = Utility.getRankValue(allCards.get(0).getRank());
@@ -111,6 +113,7 @@ public class Player{
 
 
     public String playHand(ArrayList<Card> communityCards){
+        // initializes the allcards variable with the community cards and the cards in the player's hand
         ArrayList<Card> allCards = new ArrayList<>();
         for (int i = 0; i < communityCards.size(); i++){
             allCards.add(communityCards.get(i));
@@ -120,7 +123,7 @@ public class Player{
         }
         this.allCards = allCards;
         ArrayList<Integer> rankingFrequency = findRankingFrequency();
-        ArrayList<Integer> suitFrequency = findSuitFrequency();
+        // checkHighCard intializes highAllCard and highHandCard variables so they can always be used 
         checkHighCard();
         if (checkFlush() && checkStraight() && rankingFrequency.get(8) == 1 && rankingFrequency.get(12) == 1){
             return "Royal Flush";
@@ -175,6 +178,8 @@ public class Player{
         }
     } 
 
+    // finds how many of each value there for cards
+    // uses getRankValue - 2 since it starts at 2 instead of 0
     public ArrayList<Integer> findRankingFrequency(){
         ArrayList<Integer> rankingFrequencey = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
         for (int i = 0; i < rankingFrequencey.size(); i++){
@@ -187,6 +192,7 @@ public class Player{
         return rankingFrequencey; 
     }
 
+    // uses the getSuitValue from Utility that was added to update the values in the list easier
     public ArrayList<Integer> findSuitFrequency(){
         ArrayList<Integer> suitFrequency = new ArrayList<>(List.of(0, 0, 0, 0));
         for (int i = 0; i < allCards.size(); i++){

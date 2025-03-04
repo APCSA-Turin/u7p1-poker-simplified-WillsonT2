@@ -21,6 +21,7 @@ public class Utility{
     public static String[] getRanks(){return ranks;}
     public static String[] getSuits(){return suits;}
 
+    // made getSuitValue to do same thing as getRankValue but for suits, used to read the suits
     public static int getSuitValue(String suit){
         switch (suit) {
             case "♦": return 0;
@@ -30,6 +31,7 @@ public class Utility{
         }
         return -1;
     }
+
     public static int getRankValue(String rank){
         switch(rank){
             case "2": return 2;
