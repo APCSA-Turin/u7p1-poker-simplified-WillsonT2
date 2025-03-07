@@ -22,7 +22,7 @@ public class Player{
     public void addCard(Card c){
         hand.add(c);
     }
-    
+
     public boolean checkFourOfAKind(){
         ArrayList<Integer> rankingFrequency = findRankingFrequency();
         for (int i = 0; i < rankingFrequency.size(); i++){
@@ -55,8 +55,10 @@ public class Player{
 
     public boolean checkFlush(){
         ArrayList<Integer> suitFrequency = findSuitFrequency();
-        if (suitFrequency.contains(5)){
-            return true;
+        for (int i = 0; i < suitFrequency.size(); i++){
+            if (suitFrequency.get(i) == 5){
+                return true;
+            }
         }
         return false;
     }
